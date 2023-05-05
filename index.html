@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Schere Stein Papier</title>
+</head>
+<body>
+<div class="fields">
+    <div class="play-field">
+        <header>
+            <h1>Schere Stein Papier</h1>
+            <img id="logo" src="./Schere Stein Papier.png">
+        </header>
+    <main>
+        <div class="container">
+            <div id="player-container" class="play-box"></div>
+            <div class="symbols">
+                <div><img id="schere" class="icon" src="./Schere Icon.png"></div>
+                <div><img id="stein" class="icon" src="./Stein Icon.png"></div>
+                <div><img id="papier" class="icon" src="./Papier Icon.png"></div>
+            </div>
+            <div id="computer-container" class="play-box"></div>
+        </div>
+    </main>
+    </div>
+        <div class="text-field">
+            <div class="text"><p id="result"></p></div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
