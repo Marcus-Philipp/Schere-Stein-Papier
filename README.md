@@ -1,2 +1,0 @@
-# Schere-Stein-Papier
- 
