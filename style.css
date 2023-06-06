@@ -101,9 +101,33 @@ header {
     visibility: hidden;
 }
 
-@media only screen and (min-width: 600px) {
+@media (min-width: 600px) {
     .container {
         flex-direction: row;
         justify-content: space-between;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    .text-field {
+        font-size: 24px;
+    }
+
+    .icon {
+        width: 80px;
+        margin: 5px;
+    }
+
+    .play-box {
+        height: 150px;
+        width: 150px;
+    }
+
+    .container {
+        flex-direction: column;
     }
 }

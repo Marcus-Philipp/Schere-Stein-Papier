@@ -53,25 +53,29 @@ const startGame = (choice) => {
     const endResult = game(choice, computer)
 
     document.getElementById('player-container').style.visibility = 'visible';
-    document.getElementById('computer-container').style.visibility = 'visible';
+
+    setTimeout(() => {
+        document.getElementById('computer-container').style.visibility = 'visible';
+    }, 600)
+    
 
     setTimeout(() => {
         document.getElementById('player-container').innerHTML = `<img src="./${choice} Icon.png" class="icon">`;
-     }, 200)
+     }, 300)
      
     setTimeout(() => {
         document.getElementById('computer-container').innerHTML = `<img src="./${computer} Icon.png" class="icon">`;
-     }, 500)
+     }, 1200)
 
      setTimeout(() => {
         document.querySelector('.text-field').style.visibility = 'visible';
-    }, 1000)  
+    }, 1800)  
 
     setTimeout(() => {
         document.getElementById('result').textContent = endResult;
-     }, 1000);
+     }, 1800);
 
     setTimeout(() => {
         resetGame();
-     },2500)
+     },3000)
 }
