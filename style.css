@@ -61,6 +61,16 @@ header {
     align-items: center;
 }
 
+.score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-counter, .computer-counter {
+    font-weight: bold;
+}
+
 .symbols {
     display: flex;
     flex-wrap: wrap;

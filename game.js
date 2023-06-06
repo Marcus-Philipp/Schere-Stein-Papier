@@ -1,3 +1,18 @@
+let isGameRunning = false;
+let scorePlayer = 0;
+let scoreComputer = 0;
+
+const updateScore = () => {
+    document.querySelector('.player-counter').innerHTML = `Player Score: ${scorePlayer}`;
+    document.querySelector('.computer-counter').innerHTML = `Computer Score: ${scoreComputer}`;
+};
+
+const Results = {
+    Win: 'Du gewinnst!!!',
+    Lose: 'Computer gewinnt!!!',
+    Draw: 'Unentschieden!!!'
+};
+
 const computerChoice = () => {
     const randomValue = Math.floor(Math.random() * 3);
     
@@ -15,19 +30,18 @@ const computerChoice = () => {
 
 const game = (player, computer) => {
     if(player === computer) {
-        return 'Unentschieden!!!';
+        return Results.Draw;
     }
 
     if((player === 'Schere' && computer === 'Papier') ||
       (player === 'Stein' && computer === 'Schere') || 
       (player === 'Papier' && computer === 'Stein')) {
-        return 'Du gewinnst!!!';
+        return Results.Win;
     } else {
-        return 'Computer gewinnt!!!'
+        return Results.Lose;
     }
 }
 
-let isGameRunning = false;
 
 document.getElementById('schere').addEventListener('click', () => {
     if(!isGameRunning) {
@@ -53,7 +67,23 @@ const resetGame = () => {
     document.getElementById('player-container').style.visibility = 'hidden';
     document.getElementById('computer-container').style.visibility = 'hidden';
     document.querySelector('.text-field').style.visibility = 'hidden';
-}
+};
+
+const winGame = () => {
+    if(scorePlayer === 3) {
+      alert('Du hast gewonnen!!!');
+      resetScore();
+    } else if(scoreComputer === 3) {
+      alert('Computer hat gewonnen!!!');
+      resetScore();
+    }
+};
+
+const resetScore = () => {
+    scorePlayer = 0;
+    scoreComputer = 0;
+    updateScore();
+};
 
 
 const startGame = (choice) => {
@@ -61,13 +91,18 @@ const startGame = (choice) => {
     const computer = computerChoice();
     const endResult = game(choice, computer)
 
+    if(endResult === Results.Win) {
+        scorePlayer++;
+    } else if(endResult === Results.Lose) {
+        scoreComputer++;
+    }
+
     document.getElementById('player-container').style.visibility = 'visible';
 
     setTimeout(() => {
         document.getElementById('computer-container').style.visibility = 'visible';
     }, 600)
     
-
     setTimeout(() => {
         document.getElementById('player-container').innerHTML = `<img src="./${choice} Icon.png" class="icon">`;
      }, 300)
@@ -76,13 +111,21 @@ const startGame = (choice) => {
         document.getElementById('computer-container').innerHTML = `<img src="./${computer} Icon.png" class="icon">`;
      }, 1200)
 
-     setTimeout(() => {
+    setTimeout(() => {
         document.querySelector('.text-field').style.visibility = 'visible';
     }, 1800)  
 
     setTimeout(() => {
         document.getElementById('result').textContent = endResult;
      }, 1800);
+
+    setTimeout(() => {
+        updateScore();
+    }, 2000);
+
+    setTimeout(() => {
+       winGame();
+    }, 2100);
 
     setTimeout(() => {
         resetGame();
