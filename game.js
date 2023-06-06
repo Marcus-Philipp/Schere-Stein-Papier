@@ -27,14 +27,22 @@ const game = (player, computer) => {
     }
 }
 
+let isGameRunning = false;
+
 document.getElementById('schere').addEventListener('click', () => {
+    if(!isGameRunning) {
     startGame('Schere');
+    }
 })
 document.getElementById('stein').addEventListener('click', () => {
+    if(!isGameRunning) {
     startGame('Stein');
+    }
 })
 document.getElementById('papier').addEventListener('click', () => {
+    if(!isGameRunning) {
     startGame('Papier');
+    }
 })
 
 const resetGame = () => {
@@ -49,6 +57,7 @@ const resetGame = () => {
 
 
 const startGame = (choice) => {
+    isGameRunning = true;
     const computer = computerChoice();
     const endResult = game(choice, computer)
 
@@ -77,5 +86,6 @@ const startGame = (choice) => {
 
     setTimeout(() => {
         resetGame();
+        isGameRunning = false;
      },3000)
 }
